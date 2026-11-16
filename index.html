@@ -1,0 +1,592 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mola Cafe - Kahve, tatlı ve güzel anların buluşma noktası.">
+<title>Mola Cafe | Kendine Bir Mola Ver</title>
+
+<style>
+:root {
+    --dark: #241b17;
+    --brown: #79543a;
+    --gold: #bd8b5c;
+    --cream: #f7f2e9;
+    --text: #30251f;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+}
+
+header {
+    background: var(--dark);
+    color: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.15)),
+    url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=1600');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-label {
+    color: #e0b78e;
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 70px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+    color: #eee;
+}
+
+.button {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: .3s;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #95683e;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 90px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 37px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #806d5e;
+    margin-bottom: 48px;
+    line-height: 1.6;
+}
+
+/* MENU */
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px #00000010;
+    transition: .3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px #00000020;
+}
+
+.menu-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.menu-info {
+    padding: 24px;
+}
+
+.menu-info h3 {
+    margin-bottom: 12px;
+}
+
+.menu-info p {
+    color: #75675d;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.price {
+    color: #a46e3f;
+    font-weight: bold;
+    margin-top: 18px;
+    font-size: 19px;
+}
+
+/* GALERİ */
+
+.gallery {
+    background: #eee5d8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+/* HAKKIMIZDA */
+
+.about {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.about p {
+    margin-top: 25px;
+    line-height: 2;
+    color: #e0d4c9;
+    font-size: 17px;
+}
+
+/* YORUMLAR */
+
+.reviews {
+    background: #eee5d8;
+}
+
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px #00000010;
+    transition: .3s;
+}
+
+.review-card:hover {
+    transform: translateY(-6px);
+}
+
+.stars {
+    color: #d49a35;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.review-card p {
+    line-height: 1.8;
+    color: #75675d;
+    margin-bottom: 22px;
+}
+
+.review-card h3 {
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* İLETİŞİM */
+
+.contact {
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px #00000010;
+}
+
+.contact-box p {
+    margin: 20px;
+    color: #655449;
+    font-size: 16px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 16px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: .3s;
+}
+
+.whatsapp-button:hover {
+    background: #1da851;
+    transform: translateY(-3px);
+}
+
+/* SABİT WHATSAPP */
+
+.floating-whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 17px 22px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px #00000030;
+    z-index: 200;
+    transition: .3s;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.08);
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    color: #d2c4b7;
+    font-size: 14px;
+}
+
+/* MOBİL */
+
+@media(max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 60px 7%;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid img {
+        height: 240px;
+    }
+
+    .contact-box {
+        padding: 25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MOLA CAFE.</div>
+
+    <nav>
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#menu">Menümüz</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#yorumlar">Yorumlar</a>
+        <a href="#iletisim">İletişim</a>
+    </nav>
+</header>
+
+<!-- ANA SAYFA -->
+
+<div class="hero" id="anasayfa">
+    <div class="hero-content">
+        <div class="hero-label">KAHVE • LEZZET • HUZUR</div>
+
+        <h1>Kendine Bir Mola Ver.</h1>
+
+        <p>
+            Günün koşuşturmasına küçük bir ara.
+            Özenle hazırlanan kahvelerimiz,
+            enfes tatlılarımız ve sıcak atmosferimizle
+            tanışmaya hazır mısın?
+        </p>
+
+        <a href="#menu" class="button">Menümüzü Keşfet</a>
+    </div>
+</div>
+
+<!-- MENÜ -->
+
+<section id="menu">
+    <h2 class="section-title">Lezzetlerimiz</h2>
+    <p class="subtitle">
+        Her yudumda ve her lokmada ayrı bir keyif.
+    </p>
+
+    <div class="menu">
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600" alt="Caramel Latte">
+            <div class="menu-info">
+                <h3>Caramel Latte</h3>
+                <p>Espresso, süt ve karamelin eşsiz uyumu.</p>
+                <div class="price">150 TL</div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600" alt="Filtre Kahve">
+            <div class="menu-info">
+                <h3>Filtre Kahve</h3>
+                <p>Özenle demlenmiş özel kahve çekirdekleri.</p>
+                <div class="price">110 TL</div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600" alt="Kruvasan">
+            <div class="menu-info">
+                <h3>Tereyağlı Kruvasan</h3>
+                <p>Günlük hazırlanan çıtır kruvasan.</p>
+                <div class="price">130 TL</div>
+            </div>
+        </div>
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Pizza">
+            <div class="menu-info">
+                <h3>Özel Cafe Pizza</h3>
+                <p>Taze malzemelerle hazırlanan özel pizza.</p>
+                <div class="price">250 TL</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALERİ -->
+
+<section class="gallery" id="galeri">
+    <h2 class="section-title">Mola Cafe'den Kareler</h2>
+    <p class="subtitle">
+        Güzel anların ve lezzetlerin buluşma noktası.
+    </p>
+
+    <div class="gallery-grid">
+
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800" alt="Kahve">
+
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800" alt="Cafe iç mekanı">
+
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800" alt="Kahve hazırlama">
+
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800" alt="Cafe ortamı">
+
+    </div>
+</section>
+
+<!-- HAKKIMIZDA -->
+
+<section class="about" id="hakkimizda">
+    <div class="about-content">
+        <h2 class="section-title">Biz Kimiz?</h2>
+
+        <p>
+            Mola Cafe, kahvenin sadece bir içecek değil,
+            güzel anların bir parçası olduğuna inanır.
+            Sıcak atmosferimiz, kaliteli ürünlerimiz ve
+            misafirperverliğimizle sizi ağırlamaktan
+            mutluluk duyarız.
+        </p>
+    </div>
+</section>
+
+<!-- MÜŞTERİ YORUMLARI -->
+
+<section class="reviews" id="yorumlar">
+    <h2 class="section-title">Misafirlerimiz Ne Diyor?</h2>
+
+    <p class="subtitle">
+        Güzel anılar, güzel lezzetlerle başlar.
+    </p>
+
+    <div class="review-container">
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Kahveleri gerçekten çok güzel.
+                Ortamı da oldukça huzurlu."
+            </p>
+            <h3>Ayşe K.</h3>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Arkadaşlarımla vakit geçirmek için
+                çok güzel bir ortam."
+            </p>
+            <h3>Mehmet T.</h3>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Tatlıları ve kahveleri harika.
+                Tasarımı da çok hoş."
+            </p>
+            <h3>Elif D.</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- İLETİŞİM -->
+
+<section class="contact" id="iletisim">
+    <h2 class="section-title">Bize Ulaşın</h2>
+
+    <p class="subtitle">
+        Bir kahve molası için bize ulaşın.
+    </p>
+
+    <div class="contact-box">
+
+        <p>📍 İstanbul, Türkiye</p>
+        <p>📞 0555 000 00 00</p>
+        <p>🕒 Her gün 09.00 - 23.00</p>
+
+        <a
+            href="https://wa.me/905550000000?text=Merhaba%20Mola%20Cafe"
+            class="whatsapp-button"
+            target="_blank"
+            rel="noopener noreferrer">
+            WhatsApp Üzerinden Bize Ulaşın
+        </a>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Mola Cafe. Tüm hakları saklıdır.</p>
+</footer>
+
+<a
+    href="https://wa.me/905550000000?text=Merhaba%20Mola%20Cafe"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer">
+    WhatsApp
+</a>
+
+</body>
+</html>
+```
